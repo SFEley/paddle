@@ -1,0 +1,42 @@
+!bg_color = #cc9966
+!border_color = #663300
+!body_font = "Georgia,\"Times New Roman\",Times,serif"
+!header_font = "\"Trebuchet MS\",\"Lucida Sans\",Geneva,Helvetica,sans-serif"
+
+/* We're going to set up an elastic layout here, with sidebar on the right
+!units = em
+!phi = 1.6180339887
+!border_width = 0.25
+!margin_width = 1
+!spacing = 2 * (!border_width + !margin_width)
+!main_width = 50
+!left_width = (!main_width / !phi) - !spacing
+!right_width = !main_width - !left_width - !spacing
+
+#master
+  :width = !main_width + !units
+  :margin = !margin_width + !units
+  :padding = (0.8 * !margin_width) + !units
+  :border
+    :style groove
+    :width = !border_width + !units
+    :color = !border_color
+  :background
+    :color = !bg_color
+    :image url(/images/sand.jpg)
+  
+.block
+  :padding = (0.5 * !margin_width) + !units + ', ' + (0.25 * !margin_width) + !units
+  :border
+    :style ridge
+    :width = !border_width
+    :color = !border_color
+    
+.inset
+  :padding (0.5 * !margin_width) + !units
+  :margin (0.25 * !margin_width) + !units + ', 0'
+  :border 
+    :style inset
+    :width = (!border_width * 0.5) + !units 
+    :color = !border_color
+  
