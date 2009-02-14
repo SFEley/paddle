@@ -1,0 +1,15 @@
+%h1
+  Auctions controller, edit action
+%p
+  Edit this file in
+  %tt
+    app/views/auctions/edit.html.erb
+= error_messages_for @auction
+
+= form_for(@auction, :action => url(:auction, @auction)) do
+  %p
+    = submit "Update"
+
+= link_to 'Show', url(:auction, @auction)
+|
+= link_to 'Back', url(:auctions)

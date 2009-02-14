@@ -1,0 +1,16 @@
+%h1
+  Auctions controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/auctions/index.html.erb
+%table
+  %tr
+  - for auction in @auctions
+    %tr
+      %td
+        = link_to 'Show', url(:auction, auction)
+      %td
+        = link_to 'Edit', url(:edit_auction,  auction)
+
+= link_to 'New', url(:new_auction)
