@@ -1,12 +1,16 @@
+- require_js "auction"
+
 #listing
   - @auctions.each do |type, auctions|
     %div{:id => type, :class => "block"}
       %h1== #{type} Auctions
       - for auction in auctions do
         #div{:id => auction.id.to_s, :class => "auction #{auction.status} inset"}
+          =link_to "(Delete)", resource(auction, :delete), :class => "utility collapse"
+          =link_to "(Edit)", resource(auction, :edit), :class => "utility collapse"
           %h2= link_to auction.title, resource(auction)
           %p= auction.description
-          %p.inline
+          %p.inline.collapse
             %strong Total Available: 
             =auction.quantity
             %br
@@ -30,5 +34,5 @@
     .status
       Bidding is currently OPEN.
 
-  #detail.inset
+  #bids.inset
     To view or edit an auction, click on its name in the listing to the left.

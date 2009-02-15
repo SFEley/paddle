@@ -2,9 +2,13 @@
 %html{ html_attrs("en_us") }
   %head
     %title
-      Fresh Merb App
+      UUCG Auction
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
-    %link{ :href => "/stylesheets/master.css", :rel => "stylesheet", :media => "screen", :type => "text/css", :charset => "utf-8" }/
+    =css_include_tag :master
+    =js_include_tag :jquery, :application
+    
+    =include_required_css
+    =include_required_js
   %body
     #master
       #header.block

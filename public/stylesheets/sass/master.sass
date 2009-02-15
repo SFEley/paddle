@@ -72,9 +72,15 @@
     a:hover
       :color blue
     p
-      :margin
-        :top 0
-        :bottom 1em
+      :margin 0
+    a.utility
+      :margin-left 0.5em
+      :float right
+      :font
+        :size x-small
+        :family = !header_font      
+      :text
+        :decoration none
   
 #sidebar
   :float right
@@ -165,3 +171,9 @@
     :align center
   :font-weight bold
   
+.active
+  :background
+    :image url(/images/sand_darker.jpg)
+    
+.collapse
+  :display none
