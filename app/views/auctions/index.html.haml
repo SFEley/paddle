@@ -2,7 +2,7 @@
 
 #listing
   - @auctions.each do |type, auctions|
-    %div{:id => type, :class => "block"}
+    %div{:id => "list_#{type}", :class => "block"}
       %h1== #{type} Auctions
       - for auction in auctions do
         #div{:id => auction.id.to_s, :class => "auction #{auction.status} inset"}
@@ -25,12 +25,12 @@
       %ul
         - @auctions.each_key do |type|
           %li
-            = check_box :name => type, :checked => true, :label => type
+            = check_box :name => type, :checked => true, :label => type, :id => "types_#{type}"
     #statuses.checklist 
       %p Auction Status
       %ul
-        %li= check_box :name => "open", :checked => true, :label => "Open"
-        %li= check_box :name => "closed", :checked => true, :label => "Closed"
+        %li= check_box :name => "open", :checked => true, :label => "Open", :id => "statuses_open"
+        %li= check_box :name => "closed", :checked => true, :label => "Closed", :id => "statuses_closed"
     .status
       Bidding is currently OPEN.
 

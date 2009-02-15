@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  $(".auction").bind("click", function(e) {
+  
+  // Activate an auction and show the bid panel
+  $(".auction").live("click", function(e) {
     var id = this.id.match(/\d+/);
     
     if ($(this).hasClass("active")) { // Toggle it off
@@ -15,4 +17,14 @@ $(document).ready(function() {
     }
   });
   
+  // Hide and show auction types when checked
+  $("#types :checkbox").bind("change", function(e) {
+    var list = "#list_" + this.name;
+    if ($(this).is(":checked")) {
+      $(list).slideDown("normal");
+    }
+    else {
+      $(list).slideUp("normal");
+    }
+  });
 });
