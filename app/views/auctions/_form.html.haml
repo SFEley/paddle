@@ -1,4 +1,4 @@
-=form_for @auction, :action => url(:auctions) do
+=form_for @auction do
   .line
     Auction Type: 
     =select :auction_type, :collection => Auction::TYPES, :selected => "Live", :title => "Auction Type"
@@ -9,13 +9,13 @@
   .line
     Description:
   .line
-    =text_area :description, :rows => 6, :cols => 60, :title => "Description"
+    =text_area :description, :rows => 6, :cols => 50, :title => "Description"
   .line 
     Total Quantity: 
     =text_field :quantity, :size => 2, :title => "Quantity"
   .line
     Minimum Bid: $
-    =text_field :minimum_bid, :size => 5, :title => "Minimum Bid", :value => @auction.minimum_bid.with_precision(2)
+    =text_field :minimum_bid, :size => 5, :title => "Minimum Bid", :value => auction.minimum_bid.with_precision(2)
   .line
     =submit "Save"
     =button "Cancel"

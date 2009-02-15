@@ -1,3 +1,24 @@
 =error_messages_for @auction, :error_class => "errors"
 
-=partial :form
+/ =partial :form, :with => @auction, :as => :auction
+=form_for @auction do
+  .line
+    Auction Type: 
+    =select :auction_type, :collection => Auction::TYPES, :selected => "Live", :title => "Auction Type"
+  .line
+    Code and Title:
+    =text_field :code, :size => 4, :title => "Auction Code"
+    =text_field :title, :size => 20, :title => "Item Title"
+  .line
+    Description:
+  .line
+    =text_area :description, :rows => 6, :cols => 50, :title => "Description"
+  .line 
+    Total Quantity: 
+    =text_field :quantity, :size => 2, :title => "Quantity"
+  .line
+    Minimum Bid: $
+    =text_field :minimum_bid, :size => 5, :title => "Minimum Bid", :value => @auction.minimum_bid.with_precision(2)
+  .line
+    =submit "Save"
+    =button "Cancel"

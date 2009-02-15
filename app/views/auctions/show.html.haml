@@ -1,10 +1,1 @@
-%h1
-  Auctions controller, show action
-%p
-  Edit this file in
-  %tt
-    app/views/auctions/show.html.erb
-
-= link_to 'Edit',  url(:edit_auction,  @auction)
-|
-= link_to 'Back', url(:auctions)
+=partial :auction, :with => @auction

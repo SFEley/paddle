@@ -4,18 +4,7 @@
   - @auctions.each do |type, auctions|
     %div{:id => "list_#{type}", :class => "block"}
       %h1== #{type} Auctions
-      - for auction in auctions do
-        #div{:id => auction.id.to_s, :class => "auction #{auction.status} inset"}
-          =link_to "(Delete)", resource(auction, :delete), :class => "utility collapse"
-          =link_to "(Edit)", resource(auction, :edit), :class => "utility collapse"
-          %h2= link_to auction.title, resource(auction)
-          %p= auction.description
-          %p.inline.collapse
-            %strong Total Available: 
-            =auction.quantity
-            %br
-            %strong Minimum Bid:
-            =auction.minimum_bid.to_currency
+      =partial :auction, :with => auctions
       
       
 #sidebar.block

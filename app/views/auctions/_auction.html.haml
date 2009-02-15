@@ -1,0 +1,11 @@
+%div{:id => "auction_#{auction.id}", :class => "auction #{auction.status} inset"}
+  =link_to "(Delete)", resource(auction, :delete), :class => "utility delete collapse"
+  =link_to "(Edit)", resource(auction, :edit), :class => "utility edit collapse"
+  %h2= link_to auction.title, resource(auction)
+  %p= auction.description
+  %p.inline.collapse
+    %strong Total Available: 
+    =auction.quantity
+    %br
+    %strong Minimum Bid:
+    =auction.minimum_bid.to_currency

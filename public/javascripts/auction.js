@@ -27,4 +27,10 @@ $(document).ready(function() {
       $(list).slideUp("normal");
     }
   });
+  
+  // Replace an auction with its edit form
+  $(".auction a.edit").live("click", function(e) {
+    e.preventDefault();
+    $(this).parent().load(this.href + " form");
+  });
 });
