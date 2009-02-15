@@ -58,6 +58,10 @@
   color: white;
   text-align: center; }
 
+#filter {
+  font-family: "Trebuchet MS","Lucida Sans",Geneva,Helvetica,sans-serif;
+  font-size: smaller; }
+
 #message {
   clear: both;
   font-size: 80%;
@@ -99,17 +103,21 @@
   border-color: #663300; }
 
 .checklist {
-  display: inline;
-  margin: 0.25em;
-  padding: 0;
-  width: 5em; }
+  float: left;
+  width: 40%; }
+  .checklist p {
+    text-decoration: underline;
+    margin: 0; }
+  .checklist ul {
+    margin: 0.25em;
+    padding: 0;
+    list-style-type: none;
+    list-style-position: inside; }
+    .checklist ul li {
+      margin: 0; }
 
 .status {
-  clear: both; }
-
-#filter ul {
-  margin: 0;
-  list-style-type: none;
-  list-style-position: inside; }
-  #filter ul li {
-    margin: 0; }
+  clear: both;
+  padding: 0.5em 0;
+  text-align: center;
+  font-weight: bold; }

@@ -16,15 +16,19 @@
       
 #sidebar.block
   #filter.inset
-    #types.checklist
+    #types.checklist 
+      %p Auction Types
       %ul
         - @auctions.each_key do |type|
           %li
             = check_box :name => type, :checked => true, :label => type
-    #statuses.checklist
+    #statuses.checklist 
+      %p Auction Status
       %ul
         %li= check_box :name => "open", :checked => true, :label => "Open"
         %li= check_box :name => "closed", :checked => true, :label => "Closed"
+    .status
+      Bidding is currently OPEN.
 
   #detail.inset
     To view or edit an auction, click on its name in the listing to the left.

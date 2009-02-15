@@ -88,7 +88,11 @@
   :text
     :align center
   
-
+#filter
+  :font
+    :family = !header_font
+    :size smaller
+    
 #message
   :clear both
   :font
@@ -139,21 +143,25 @@
     :color = !border_color
 
 .checklist
-  :display inline
-  :margin 0.25em
-  :padding 0
-  :width 5em
-  
+  :float left
+  :width 40%
+  p
+    :text-decoration underline
+    :margin 0
+  ul
+    :margin 0.25em
+    :padding 0
+    :list
+      :style
+        :type none
+        :position inside
+    li
+      :margin 0
+        
 .status
   :clear both
-  
-#filter ul
-  
-  :margin 0
-  :list
-    :style
-      :type none
-      :position inside
-  li
-    :margin 0
+  :padding 0.5em 0
+  :text
+    :align center
+  :font-weight bold
   
