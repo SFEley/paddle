@@ -2,7 +2,11 @@ class Auctions < Application
   # provides :xml, :yaml, :js
 
   def index
-    @auctions = Auction.all
+    @auctions = {}
+    Auction.all.each do |auction|
+      @auctions[auction.type] ||= []
+      @auctions[auction.type] << auction
+    end
     display @auctions
   end
 

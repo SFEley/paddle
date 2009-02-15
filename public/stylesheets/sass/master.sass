@@ -8,7 +8,7 @@
 !phi = 1.6180339887
 !border_width = 0.25
 !margin_width = 1
-!spacing = 2 * (!border_width + !margin_width)
+!spacing = 2.75
 !main_width = 50
 !left_width = (!main_width / !phi) - !spacing
 !right_width = !main_width - !left_width - !spacing
@@ -16,7 +16,7 @@
 #master
   :width = !main_width + !units
   :margin = !margin_width + !units
-  :padding = (0.8 * !margin_width) + !units
+  :padding = 0.5em
   :border
     :style groove
     :width = !border_width + !units
@@ -24,19 +24,110 @@
   :background
     :color = !bg_color
     :image url(/images/sand.jpg)
+    
+#header
+  :font
+    :family = !header_font
+  :color white
+  :padding 0.5em
   
-.block
-  :padding = (0.5 * !margin_width) + !units + ', ' + (0.25 * !margin_width) + !units
+  
+  h1
+    :font
+      :size 180%
+    :padding
+      :bottom 2em
+    :vertical-align middle
+  
+  .inline
+    :display inline
+    :margin
+      :right 1em
+      
+  #nav
+    :float right
+    :font
+      :size 80%
+    a
+      :color white
+      :text-decoration none
+    a:hover
+      :color blue
+    ul
+      :list-style-position inside
+      :margin 0
+      :padding 0
+    
+#listing
+  :float left
+  :width = !left_width + !units
+  
+#sidebar
+  :float right
+  :width = !right_width + !units
+  
+#footer
+  :clear both
+  :font
+    :family = !header_font
+  :color white
+  :text
+    :align center
+  
+
+#message
+  :clear both
+  :font
+    :size 80%
+  .error
+    :background
+      :color red
+      :image url(/images/sand_red.jpg)
+  .warning
+    :color black
+    :background
+      :color yellow
+      :image url(/images/sand_yellow.jpg)
+  .notice, .info, .success
+    :background
+      :color green
+      :image url(/images/sand_green.jpg)
+
+
+
+.errors
+  :font
+    :size 60%
+  :color black
+  h2
+    :margin 0px
+  ul li
+    :background
+      :color yellow
+      :image url(/images/sand_yellow.jpg)
+
+.block, #message, .errors
   :border
     :style ridge
     :width = !border_width
     :color = !border_color
+  :margin 0.5em
     
-.inset
-  :padding (0.5 * !margin_width) + !units
-  :margin (0.25 * !margin_width) + !units + ', 0'
+.inset, #message div, .errors ul li
+  :padding 1em
+  :margin 0.5em
   :border 
     :style inset
     :width = (!border_width * 0.5) + !units 
     :color = !border_color
+
+#filter ul
+  
+  :margin 0
+  :list
+    :style
+      :type none
+      :position inside
+  li
+    :margin 0
   

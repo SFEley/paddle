@@ -22,4 +22,22 @@ Spec::Runner.configure do |config|
     DataMapper.auto_migrate! if Merb.orm == :datamapper
   end
   
+  config.before(:each) do
+    repository(:default) do
+      transaction = DataMapper::Transaction.new(repository)
+      transaction.begin
+      repository.adapter.push_transaction(transaction)
+    end
+    Sham.reset
+  end
+
+  config.after(:each) do
+    repository(:default) do
+      while repository.adapter.current_transaction
+        repository.adapter.current_transaction.rollback
+        repository.adapter.pop_transaction
+      end
+    end
+  end
+    
 end

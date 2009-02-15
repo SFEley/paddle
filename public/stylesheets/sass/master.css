@@ -35,7 +35,7 @@
 
 #listing {
   float: left;
-  width: 28.1516994384476em; }
+  width: 28.4016994384476em; }
 
 #sidebar {
   float: right;
@@ -77,15 +77,8 @@
   margin: 0.5em; }
 
 .inset, #message div, .errors ul li {
-  padding: 1em;
-  margin: 0.5em;
+  padding: 0.5em;
+  margin: 0.25em, 0.5em;
   border-style: inset;
   border-width: 0.125em;
   border-color: #663300; }
-
-#filter ul {
-  margin: 0;
-  list-style-type: none;
-  list-style-position: inside; }
-  #filter ul li {
-    margin: 0; }

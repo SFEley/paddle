@@ -1,16 +1,24 @@
-%h1
-  Auctions controller, index action
-%p
-  Edit this file in
-  %tt
-    app/views/auctions/index.html.erb
-%table
-  %tr
-  - for auction in @auctions
-    %tr
-      %td
-        = link_to 'Show', url(:auction, auction)
-      %td
-        = link_to 'Edit', url(:edit_auction,  auction)
+#listing.block
+  - @auctions.each do |type, auctions|
+    %div{:id => type, :class => "inset"}
+      %h1== #{type.capitalize} Auctions
+      - for auction in auctions do
+        #div{:id => auction.id, :class => "auction #{auction.status}"}
+          %h2{:class => auction.status} link_to auction.name, resource(auction)
+        
+      
+      
+#sidebar.block
+  #filter.inset
+    #types.checklist
+      %ul
+        - @auctions.each_key do |type|
+          %li
+            = check_box :name => type, :checked => true, :label => type.capitalize
+    #statuses.checklist
+      %ul
+        %li= check_box :name => "open", :checked => true, :label => "Open"
+        %li= check_box :name => "closed", :checked => true, :label => "Closed"
 
-= link_to 'New', url(:new_auction)
+  #detail.inset
+    To view or edit an auction, click on its name in the listing to the left.
