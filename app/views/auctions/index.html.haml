@@ -1,11 +1,17 @@
-#listing.block
+#listing
   - @auctions.each do |type, auctions|
-    %div{:id => type, :class => "inset"}
-      %h1== #{type.capitalize} Auctions
+    %div{:id => type, :class => "block"}
+      %h1== #{type} Auctions
       - for auction in auctions do
-        #div{:id => auction.id, :class => "auction #{auction.status}"}
-          %h2{:class => auction.status} link_to auction.name, resource(auction)
-        
+        #div{:id => auction.id.to_s, :class => "auction #{auction.status} inset"}
+          %h2= link_to auction.title, resource(auction)
+          %p= auction.description
+          %p.inline
+            %strong Total Available: 
+            =auction.quantity
+            %br
+            %strong Minimum Bid:
+            =auction.minimum_bid.to_currency
       
       
 #sidebar.block
@@ -14,7 +20,7 @@
       %ul
         - @auctions.each_key do |type|
           %li
-            = check_box :name => type, :checked => true, :label => type.capitalize
+            = check_box :name => type, :checked => true, :label => type
     #statuses.checklist
       %ul
         %li= check_box :name => "open", :checked => true, :label => "Open"

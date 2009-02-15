@@ -4,8 +4,8 @@ class Auctions < Application
   def index
     @auctions = {}
     Auction.all.each do |auction|
-      @auctions[auction.type] ||= []
-      @auctions[auction.type] << auction
+      @auctions[auction.auction_type] ||= []
+      @auctions[auction.auction_type] << auction
     end
     display @auctions
   end

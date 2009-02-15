@@ -8,7 +8,7 @@
 !phi = 1.6180339887
 !border_width = 0.25
 !margin_width = 1
-!spacing = 2.75
+!spacing = 1.5
 !main_width = 50
 !left_width = (!main_width / !phi) - !spacing
 !right_width = !main_width - !left_width - !spacing
@@ -61,6 +61,20 @@
 #listing
   :float left
   :width = !left_width + !units
+  h1
+    :margin 0.5em 
+  
+  .auction
+    h2
+      :margin 0.25em 0
+    a
+      :color black
+    a:hover
+      :color blue
+    p
+      :margin
+        :top 0
+        :bottom 1em
   
 #sidebar
   :float right
@@ -79,6 +93,8 @@
   :clear both
   :font
     :size 80%
+    :family = !header_font
+  :color white
   .error
     :background
       :color red
@@ -94,10 +110,10 @@
       :image url(/images/sand_green.jpg)
 
 
-
 .errors
   :font
     :size 60%
+    :family = !header_font
   :color black
   h2
     :margin 0px
@@ -114,13 +130,23 @@
   :margin 0.5em
     
 .inset, #message div, .errors ul li
-  :padding 1em
+  :clear both
+  :padding 0.5em
   :margin 0.5em
   :border 
     :style inset
     :width = (!border_width * 0.5) + !units 
     :color = !border_color
 
+.checklist
+  :display inline
+  :margin 0.25em
+  :padding 0
+  :width 5em
+  
+.status
+  :clear both
+  
 #filter ul
   
   :margin 0

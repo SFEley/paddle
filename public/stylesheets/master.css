@@ -35,7 +35,18 @@
 
 #listing {
   float: left;
-  width: 28.1516994384476em; }
+  width: 29.4016994384476em; }
+  #listing h1 {
+    margin: 0.5em; }
+  #listing .auction h2 {
+    margin: 0.25em 0; }
+  #listing .auction a {
+    color: black; }
+  #listing .auction a:hover {
+    color: blue; }
+  #listing .auction p {
+    margin-top: 0;
+    margin-bottom: 1em; }
 
 #sidebar {
   float: right;
@@ -49,7 +60,9 @@
 
 #message {
   clear: both;
-  font-size: 80%; }
+  font-size: 80%;
+  font-family: "Trebuchet MS","Lucida Sans",Geneva,Helvetica,sans-serif;
+  color: white; }
   #message .error {
     background-color: red;
     background-image: url(/images/sand_red.jpg); }
@@ -63,6 +76,7 @@
 
 .errors {
   font-size: 60%;
+  font-family: "Trebuchet MS","Lucida Sans",Geneva,Helvetica,sans-serif;
   color: black; }
   .errors h2 {
     margin: 0px; }
@@ -77,11 +91,21 @@
   margin: 0.5em; }
 
 .inset, #message div, .errors ul li {
-  padding: 1em;
+  clear: both;
+  padding: 0.5em;
   margin: 0.5em;
   border-style: inset;
   border-width: 0.125em;
   border-color: #663300; }
+
+.checklist {
+  display: inline;
+  margin: 0.25em;
+  padding: 0;
+  width: 5em; }
+
+.status {
+  clear: both; }
 
 #filter ul {
   margin: 0;
