@@ -31,6 +31,15 @@ $(document).ready(function() {
   // Replace an auction with its edit form
   $(".auction a.edit").live("click", function(e) {
     e.preventDefault();
-    $(this).parent().load(this.href + " form");
+    var auction = $(this).parent();
+    $(auction).load(this.href + " form");
+  });
+  
+  // AJAX-enable any new or edit forms
+  $(".auction form").livequery(function() {
+    var auction = $(this).parent();
+    $(this).ajaxForm(function(responseText, statusText){
+      $(auction).html(responseText);
+    });
   });
 });
