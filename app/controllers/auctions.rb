@@ -13,7 +13,7 @@ class Auctions < Application
   def show(id)
     @auction = Auction.get(id)
     raise NotFound unless @auction
-    display @auction, :layout => false
+    display @auction
   end
 
   def new
@@ -34,8 +34,8 @@ class Auctions < Application
     if @auction.save
       redirect resource(@auction), :message => {:notice => "Auction created."}
     else
-      message[:error] = "Auction failed to be created"
-      render :new
+      message[:error] = "Could not create auction."
+      render :new, :layout => false
     end
   end
 
@@ -45,7 +45,8 @@ class Auctions < Application
     if @auction.update_attributes(auction)
        redirect resource(@auction), :message => {:notice => "Auction updated."}
     else
-      display @auction, :edit
+      message[:error] = "Could not update auction."
+      render :edit, :layout => false
     end
   end
 

@@ -4,9 +4,11 @@
 
 #listing
   - @auctions.each do |type, auctions|
-    %div{:id => "list_#{type}", :class => "block"}
+    %div{:id => "list_#{type.downcase}", :class => "block"}
       %h1== #{type} Auctions
-      =partial :auction, :with => auctions
+      - for auction in auctions do
+        %div{:id => "auction_#{auction.id}", :class => "auction status_#{auction.status} list_#{type.downcase} inset"}
+          =partial :auction, :with => auction
       
       
 #sidebar.block

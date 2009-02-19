@@ -7,7 +7,7 @@ module Merb
     def styled_message(text = nil)
       text ||= message
       if !text.blank?
-        tag :div, :id => "message" do  # I assume it'll become 'flash' again in Rails 3
+        tag :div, :class => "message" do  # I assume it'll become 'flash' again in Rails 3
           if text.is_a?(Hash)
             text.each{|key, value| puts tag(:div, h(value.to_s), :class => "#{h(key)}")}
           else

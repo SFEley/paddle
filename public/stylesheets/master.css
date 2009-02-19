@@ -67,19 +67,19 @@
   font-family: "Trebuchet MS","Lucida Sans",Geneva,Helvetica,sans-serif;
   font-size: smaller; }
 
-#message {
+.message {
   clear: both;
   font-size: 80%;
   font-family: "Trebuchet MS","Lucida Sans",Geneva,Helvetica,sans-serif;
   color: white; }
-  #message .error {
+  .message .error {
     background-color: red;
     background-image: url(/images/sand_red.jpg); }
-  #message .warning {
+  .message .warning {
     color: black;
     background-color: yellow;
     background-image: url(/images/sand_yellow.jpg); }
-  #message .notice, #message .info, #message .success {
+  .message .notice, .message .info, .message .success {
     background-color: green;
     background-image: url(/images/sand_green.jpg); }
 
@@ -93,13 +93,13 @@
     background-color: yellow;
     background-image: url(/images/sand_yellow.jpg); }
 
-.block, #message, .errors {
+.block, .message, .errors {
   border-style: ridge;
   border-width: 0.25;
   border-color: #663300;
   margin: 0.5em; }
 
-.inset, #message div, .errors ul li {
+.inset, .message div, .errors ul li {
   clear: both;
   padding: 0.5em;
   margin: 0.5em;

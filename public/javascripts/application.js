@@ -12,3 +12,11 @@ jQuery.fn.activate = function() {
   $(me).addClass("active").children(".collapse").show("fast");
 };
 
+jQuery.fn.getClassNames = function() {
+  if (name = this.attr("className")) {
+    return name.split(" ");
+  }
+  else {
+    return [];
+  };
+};

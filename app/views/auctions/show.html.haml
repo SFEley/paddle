@@ -1,3 +1,4 @@
-=styled_message
+#auction{:class => "auction status_#{@auction.status} list_#{@auction.auction_type.downcase} inset"}
+  =styled_message
 
-=partial :auction, :with => @auction
+  =partial :auction, :with => @auction
