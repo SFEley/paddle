@@ -1,5 +1,6 @@
 - require_js "jquery.livequery"
 - require_js "jquery.form"
+- require_js "jquery.confirm"
 - require_js "auction"
 
 #listing
@@ -29,3 +30,8 @@
 
   #bids.inset
     To view or edit an auction, click on its name in the listing to the left.
+    
+  #admin.inset
+    %ul
+      %li
+        = link_to "New Auction", resource(:auctions, :new), :id => "new_auction"

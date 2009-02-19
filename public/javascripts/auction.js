@@ -35,6 +35,23 @@ $(document).ready(function() {
     $(auction).load(this.href + " form");
   });
   
+  // Make the delete links do their thing
+  $(".auction a.delete").live("click", function(e) {
+    e.preventDefault();
+    var auction = $(this).parent();
+    $.post($(this).attr('href'),"_method=delete",function() {
+      $(auction).fadeOut('slow', function() {
+        $(this).remove();
+      });
+    });
+  }).confirm();
+  
+  // Let the New Auction link edit on this page
+  $("#new_auction").live("click", function(e) {
+    e.preventDefault();
+    $("<div class='auction status_open inset'>").load(this.href + " form").prependTo($("#listing"));
+  });
+
   // AJAX-enable any new or edit forms
   $(".auction form").livequery(function() {
     var auction = $(this).parent();
@@ -45,7 +62,12 @@ $(document).ready(function() {
       // Figure out the new item's listing type and move it if necessary
       var listingClass = $(response).attr("className").match(/list_\w+/)[0];
       if (!$(auction).hasClass(listingClass)) {
-        $(auction).appendTo($("#" + listingClass));
+        $(auction).addClass(listingClass).appendTo($("#" + listingClass));
+      };
+      
+      // Add an auction ID if it didn't already have one
+      if ($(auction).attr('id') === undefined) {
+        $(auction).attr('id',$(response).attr('id'));
       };
       
       // Now get rid of the display after a few seconds

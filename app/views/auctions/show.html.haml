@@ -1,4 +1,4 @@
-#auction{:class => "auction status_#{@auction.status} list_#{@auction.auction_type.downcase} inset"}
+%div{:id => "auction_#{@auction.id}", :class => "auction status_#{@auction.status} list_#{@auction.auction_type.downcase} inset"}
   =styled_message
 
   =partial :auction, :with => @auction
