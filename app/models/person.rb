@@ -4,12 +4,13 @@ class Person
   property :id, Serial
   property :last_name, String, :nullable => false
   property :first_name, String, :nullable => false
-  property :email, String, :unique => true, :format => :email_address
+  property :email, String, :unique => true
   property :phone, String
   property :paddle, Integer
 
   validates_is_unique :first_name, :scope => :last_name
   validates_is_number :paddle, :allow_nil => true
+  validates_format :email, :as => :email_address, :allow_nil => true
   
   def self.by_names
     all(:order => [:last_name])

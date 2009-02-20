@@ -28,9 +28,9 @@ class People < Application
   def create(person)
     @person = Person.new(person)
     if @person.save
-      redirect resource(@person), :message => {:notice => "Person was successfully created"}
+      redirect resource(@person), :message => {:notice => "Person was successfully created."}
     else
-      message[:error] = "Person failed to be created"
+      message[:error] = "Could not create person."
       render :new
     end
   end
@@ -39,9 +39,10 @@ class People < Application
     @person = Person.get(id)
     raise NotFound unless @person
     if @person.update_attributes(person)
-       redirect resource(@person)
+       redirect resource(@person), :message => {:notice => "Person was successfully updated."}
     else
-      display @person, :edit
+      message[:error] = "Could not update person."
+      render :edit
     end
   end
 
