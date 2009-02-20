@@ -107,19 +107,21 @@
   border-width: 0.125em;
   border-color: #663300; }
 
-.checklist {
-  float: left;
-  width: 40%; }
-  .checklist p {
+.checklist, .radiolist {
+  float: left; }
+  .checklist p,   .radiolist p {
     text-decoration: underline;
     margin: 0; }
-  .checklist ul {
+  .checklist ul,   .radiolist ul {
     margin: 0.25em;
     padding: 0;
     list-style-type: none;
     list-style-position: inside; }
-    .checklist ul li {
+    .checklist ul li,     .radiolist ul li {
       margin: 0; }
+
+.checklist {
+  width: 40%; }
 
 .status {
   clear: both;
@@ -130,5 +132,5 @@
 .active {
   background-image: url(/images/sand_darker.jpg); }
 
-.collapse {
+#listing .collapse {
   display: none; }

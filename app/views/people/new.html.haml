@@ -1,13 +1,25 @@
-%h1 People controller, new action
+- require_css "people"
 
-%p 
-  Edit this file in 
-  %tt app/views/people/new.html.erb
+=form_for @person, :action => url(:people), :id => "person_form" do
+  =styled_message
 
-= error_messages_for @person
+  =error_messages_for @person, :error_class => "errors"
 
-= form_for(@person, :action => url(:people) ) do
-  %p
-    = submit "Create"
-
-= link_to 'Back', url(:people)
+  .line
+    Paddle:
+    =text_field :paddle, :size => "4"
+  .line
+    First Name: 
+    =text_field :first_name
+  .line
+    Last Name:
+    =text_field :last_name
+  .line
+    E-mail Address:
+    =text_field :email
+  .line
+    Phone Number:
+    =text_field :phone
+  .line
+    =submit "Save"
+    =button "Cancel"

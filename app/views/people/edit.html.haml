@@ -1,15 +1,25 @@
-%h1
-  People controller, edit action
-%p
-  Edit this file in
-  %tt
-    app/views/people/edit.html.erb
-= error_messages_for @person
+- require_css "people"
 
-= form_for(@person, :action => url(:person, @person)) do
-  %p
-    = submit "Update"
+=form_for :person, :id => "person_form" do
+  =styled_message
 
-= link_to 'Show', url(:person, @person)
-|
-= link_to 'Back', url(:people)
+  =error_messages_for @person, :error_class => "errors"
+
+  .line
+    Paddle:
+    =text_field :paddle, :size => "4"
+  .line
+    First Name: 
+    =text_field :first_name
+  .line
+    Last Name:
+    =text_field :last_name
+  .line
+    E-mail Address:
+    =text_field :email
+  .line
+    Phone Number:
+    =text_field :phone
+  .line
+    =submit "Save"
+    =button "Cancel"

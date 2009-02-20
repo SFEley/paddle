@@ -1,0 +1,10 @@
+=link_to "(Delete)", resource(person), :class => "utility delete collapse"
+=link_to "(Edit)", resource(person, :edit), :class => "utility edit collapse"
+%h2= person.ordered_name
+%p.inline.collapse
+  %strong E-mail: 
+  =person.email
+  -unless person.phone.blank?
+    %br
+    %strong Phone #:
+    =person.phone

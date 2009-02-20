@@ -1,18 +1,21 @@
+- require_css "people"
+
 - require_js "jquery.livequery"
 - require_js "jquery.form"
 - require_js "jquery.confirm"
-- require_js "person"
+- require_js "people"
 
-#listing.block
-  %h1 People
-  - for person in @people
-    %div{:id => "person_#{auction.id}", :class => "person inset"}
-      =partial :auction, :with => person
+#listing
+  .block
+    %h1 People
+    - for person in @people
+      %div{:id => "person_#{person.id}", :class => "person inset"}
+        =partial :person, :with => person
       
       
 #sidebar.block
   #filter.inset
-    #person_types.checklist 
+    #person_types.radiolist
       %p Show
       %ul
         %li= radio_button :name => "person_types", :value => "person", :label => "All People"
@@ -20,10 +23,8 @@
         %li= radio_button :name => "person_types", :value => "is_buyer", :label => "Buyers"
         %li= radio_button :name => "person_types", :value => "is_debtor", :label => "With Unpaid Balances"
     .status
-      Remaining balance is 
-      %strong
-        $0
-      \.
+      Remaining balance is:
+      %strong $0
 
   #payments.inset
     To view or edit a person's payments, click on his or her name in the listing to the left.

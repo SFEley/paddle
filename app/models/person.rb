@@ -9,6 +9,7 @@ class Person
   property :paddle, Integer
 
   validates_is_unique :first_name, :scope => :last_name
+  validates_is_number :paddle, :allow_nil => true
   
   def self.by_names
     all(:order => [:last_name])
