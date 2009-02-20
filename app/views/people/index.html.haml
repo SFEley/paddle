@@ -1,16 +1,36 @@
-%h1
-  People controller, index action
-%p
-  Edit this file in
-  %tt
-    app/views/people/index.html.erb
-%table
-  %tr
-  - for person in @people
-    %tr
-      %td
-        = link_to 'Show', url(:person, person)
-      %td
-        = link_to 'Edit', url(:edit_person,  person)
+- require_js "jquery.livequery"
+- require_js "jquery.form"
+- require_js "jquery.confirm"
+- require_js "person"
 
-= link_to 'New', url(:new_person)
+#listing.block
+  %h1 People
+  - for person in @people
+    %div{:id => "person_#{auction.id}", :class => "person inset"}
+      =partial :auction, :with => person
+      
+      
+#sidebar.block
+  #filter.inset
+    #person_types.checklist 
+      %p Show
+      %ul
+        %li= radio_button :name => "person_types", :value => "person", :label => "All People"
+        %li= radio_button :name => "person_types", :value => "is_seller", :label => "Sellers"
+        %li= radio_button :name => "person_types", :value => "is_buyer", :label => "Buyers"
+        %li= radio_button :name => "person_types", :value => "is_debtor", :label => "With Unpaid Balances"
+    .status
+      Remaining balance is 
+      %strong
+        $0
+      \.
+
+  #payments.inset
+    To view or edit a person's payments, click on his or her name in the listing to the left.
+  
+  #admin.inset
+    %ul
+      %li
+        = link_to "New person", resource(:people, :new), :id => "new_person"
+      %li
+        = link_to "Refresh Page", resource(:people), :id => "person_index"
