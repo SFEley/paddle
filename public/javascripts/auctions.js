@@ -4,6 +4,8 @@ $(document).ready(function() {
   $(".auction").live("click", function(e) {
     var id = this.id.match(/\d+/);
     
+    $("#bidtip").slideUp("fast");
+    
     if ($(this).hasClass("active")) { // Toggle it off
       $(this).deactivate();
       $("#bids").slideUp("fast");

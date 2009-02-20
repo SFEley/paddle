@@ -1,5 +1,5 @@
 class People < Application
-  # provides :xml, :yaml, :js
+  provides :json
 
   def index
     @people = Person.by_names

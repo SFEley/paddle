@@ -1,6 +1,10 @@
+- require_css "jquery.flexbox"
+- require_css "auctions"
+
 - require_js "jquery.livequery"
 - require_js "jquery.form"
 - require_js "jquery.confirm"
+- require_js "jquery.flexbox"
 - require_js "auctions"
 
 #listing
@@ -29,6 +33,14 @@
       Bidding is currently OPEN.
 
   #bids.inset
+    %h3#bid_title {{Title}}
+    %p Put bidder and amount in the fields below.
+    - 3.times do |bf|
+      %form{:id => "bidform_#{bf}", :class => "bidform", :action => "/auction/0/bids"}
+        %span{:id => "bidder_#{bf}", :class => "flexbox"}
+        %input{:id => "amount_#{bf}", :name => "amount", :size => "6"}
+
+  #bidtip.inset
     To view or edit an auction, click on its name in the listing to the left.
     
   #admin.inset

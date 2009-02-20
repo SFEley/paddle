@@ -1,0 +1,13 @@
+%h1 Bids controller, new action
+
+%p 
+  Edit this file in 
+  %tt app/views/bids/new.html.erb
+
+= error_messages_for @bid
+
+= form_for(@bid, :action => url(:bids) ) do
+  %p
+    = submit "Create"
+
+= link_to 'Back', url(:bids)

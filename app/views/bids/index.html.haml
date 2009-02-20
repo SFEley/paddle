@@ -1,0 +1,16 @@
+%h1
+  Bids controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/bids/index.html.erb
+%table
+  %tr
+  - for bid in @bids
+    %tr
+      %td
+        = link_to 'Show', url(:bid, bid)
+      %td
+        = link_to 'Edit', url(:edit_bid,  bid)
+
+= link_to 'New', url(:new_bid)

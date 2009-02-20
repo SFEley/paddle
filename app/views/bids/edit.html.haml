@@ -1,0 +1,15 @@
+%h1
+  Bids controller, edit action
+%p
+  Edit this file in
+  %tt
+    app/views/bids/edit.html.erb
+= error_messages_for @bid
+
+= form_for(@bid, :action => url(:bid, @bid)) do
+  %p
+    = submit "Update"
+
+= link_to 'Show', url(:bid, @bid)
+|
+= link_to 'Back', url(:bids)

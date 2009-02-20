@@ -1,0 +1,10 @@
+<%=
+  { :results => 
+    @people.collect do |person|
+      {
+        :id => person.id,
+        :name => person.paddle_name
+      }
+    end
+  }.to_json
+%>

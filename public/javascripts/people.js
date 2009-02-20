@@ -1,5 +1,8 @@
 $(document).ready(function() {
   
+  // Flexbox test!
+  $("#jsontest").flexbox("/people.json");
+  
   // Activate a person and show the payments panel
   $(".person").live("click", function(e) {
     var id = this.id.match(/\d+/);

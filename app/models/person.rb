@@ -12,6 +12,10 @@ class Person
   validates_is_number :paddle, :allow_nil => true
   validates_format :email, :as => :email_address, :allow_nil => true
   
+  has n, :selling, :class_name => "Auction", :child_key => [:seller_id]
+  has n, :bids
+  has n, :buying, :through => :bids, :class_name => "Auction", :winning => true, :order => [:title.asc], :child_key => [:buyer_id]
+  
   def self.by_names
     all(:order => [:last_name])
   end
@@ -33,7 +37,11 @@ class Person
   end
   
   def paddle_name
-    "#{paddle} - #{common_name}"
+    if paddle
+      "#{paddle} - #{common_name}"
+    else
+      common_name
+    end
   end
       
       
