@@ -2,7 +2,7 @@ class People < Application
   # provides :xml, :yaml, :js
 
   def index
-    @people = Person.all
+    @people = Person.by_names
     display @people
   end
 
