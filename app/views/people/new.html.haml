@@ -1,0 +1,13 @@
+%h1 People controller, new action
+
+%p 
+  Edit this file in 
+  %tt app/views/people/new.html.erb
+
+= error_messages_for @person
+
+= form_for(@person, :action => url(:people) ) do
+  %p
+    = submit "Create"
+
+= link_to 'Back', url(:people)

@@ -1,0 +1,15 @@
+%h1
+  People controller, edit action
+%p
+  Edit this file in
+  %tt
+    app/views/people/edit.html.erb
+= error_messages_for @person
+
+= form_for(@person, :action => url(:person, @person)) do
+  %p
+    = submit "Update"
+
+= link_to 'Show', url(:person, @person)
+|
+= link_to 'Back', url(:people)

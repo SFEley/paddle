@@ -1,0 +1,16 @@
+%h1
+  People controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/people/index.html.erb
+%table
+  %tr
+  - for person in @people
+    %tr
+      %td
+        = link_to 'Show', url(:person, person)
+      %td
+        = link_to 'Edit', url(:edit_person,  person)
+
+= link_to 'New', url(:new_person)
