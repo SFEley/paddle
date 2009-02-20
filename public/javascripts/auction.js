@@ -28,6 +28,17 @@ $(document).ready(function() {
     }
   });
   
+  // Hide and show open and closed auctions when checked
+  $("#statuses :checkbox").bind("change", function(e) {
+    var auctions = $(".auction." + $(this).attr("id"));
+    if ($(this).is(":checked")) {
+      $(auctions).show("normal");
+    }
+    else {
+      $(auctions).hide("normal");
+    };
+  });
+  
   // Replace an auction with its edit form
   $(".auction a.edit").live("click", function(e) {
     e.preventDefault();
@@ -40,7 +51,7 @@ $(document).ready(function() {
     e.preventDefault();
     var auction = $(this).parent();
     $.post($(this).attr('href'),"_method=delete",function() {
-      $(auction).fadeOut('slow', function() {
+      $(auction).hide('slow', function() {
         $(this).remove();
       });
     });
@@ -56,7 +67,7 @@ $(document).ready(function() {
   $(".auction form").livequery(function() {
     var auction = $(this).parent();
     $(this).ajaxForm(function(responseText, statusText){
-      var response = $("#auction", responseText);
+      var response = $(".auction", responseText);
       $(auction).html($(response).html());
       
       // Figure out the new item's listing type and move it if necessary
@@ -71,7 +82,7 @@ $(document).ready(function() {
       };
       
       // Now get rid of the display after a few seconds
-      $(auction).children(".message").animate({opacity: 1.0}, 3000).fadeOut("slow", function() {$(this).remove();});
+      $(auction).children(".message").animate({opacity: 1.0}, 3000).hide("slow", function() {$(this).remove();});
     });
   });
 });

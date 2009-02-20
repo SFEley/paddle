@@ -23,8 +23,8 @@
     #statuses.checklist 
       %p Auction Status
       %ul
-        %li= check_box :name => "open", :checked => true, :label => "Open", :id => "statuses_open"
-        %li= check_box :name => "closed", :checked => true, :label => "Closed", :id => "statuses_closed"
+        %li= check_box :name => "open", :checked => true, :label => "Open", :id => "status_open"
+        %li= check_box :name => "closed", :checked => true, :label => "Closed", :id => "status_closed"
     .status
       Bidding is currently OPEN.
 
@@ -35,3 +35,5 @@
     %ul
       %li
         = link_to "New Auction", resource(:auctions, :new), :id => "new_auction"
+      %li
+        = link_to "Refresh Page", resource(:auctions), :id => "auction_index"
