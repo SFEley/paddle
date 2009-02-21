@@ -44,6 +44,8 @@ Merb::Router.prepare do
   # clients from calling your create or destroy actions with a GET
   # default_routes
   
+  match('/import').to(:controller => 'import', :action => 'import').name(:import)
+  
   # Change this for your home page to be available at /
   match('/').to(:controller => 'auctions', :action =>'index')
 end

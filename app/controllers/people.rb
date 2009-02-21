@@ -2,7 +2,11 @@ class People < Application
   provides :json
 
   def index
-    @people = Person.by_names
+    if params[:q]
+      @people = Person.all(:conditions => ["paddle = ? OR first_name like ? OR last_name like ?", params[:q].to_i, params[:q] + '%', params[:q] + '%']).by_names
+    else
+      @people = Person.by_names
+    end
     display @people
   end
 

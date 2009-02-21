@@ -39,6 +39,7 @@ $(document).ready(function() {
         slideDown("fast", function() {
           // Activate the person lookup box
           $("#buyer").flexbox("/people.json", {
+            autoCompleteFirstMatch: true,
             width: 150      
           });
         

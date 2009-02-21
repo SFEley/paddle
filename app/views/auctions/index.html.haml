@@ -60,3 +60,10 @@
         = link_to "New Auction", resource(:auctions, :new), :id => "new_auction"
       %li
         = link_to "Refresh Page", resource(:auctions), :id => "auction_index"
+      %li
+        Import Auctions and People:
+        %br
+        =form :action => url(:import), :method => :post do
+          =file_field :import
+          =submit "Send"
+          
