@@ -1,6 +1,6 @@
 =link_to "(Delete)", resource(person), :class => "utility delete collapse"
 =link_to "(Edit)", resource(person, :edit), :class => "utility edit collapse"
-%h2
+%h2.person_name
   = person.ordered_name
   - if person.paddle
     %span.paddlenum== (#{person.paddle})

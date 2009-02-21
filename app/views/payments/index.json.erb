@@ -1,0 +1,18 @@
+<%=
+  { :person => {
+      :name => @person.common_name,
+      :id => @person.id,
+      :total_purchases => @person.total_purchases,
+      :total_payments => @person.total_payments,
+      :balance => @person.balance
+    },
+    :payments => 
+      @payments.collect do |payment|
+        {
+          :id => payment.id,
+          :type => payment.type,
+          :amount => payment.amount
+        }
+      end
+  }.to_json
+%>

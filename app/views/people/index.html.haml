@@ -29,6 +29,38 @@
       %strong $0
 
   #payments.inset
+    %h3#person_name {{Name}}
+    %table#payments_table
+      %tr#payment_header
+        %th Type
+        %th Amount
+      %tr.total
+        %td Total Bids:
+        %td#purchases_total $0.00
+      %tr.total
+        %td Total Payments:
+        %td#payments_total $0.00
+      %tr.total
+        %td Balance:
+        %td#balance $0.00
+      %tr#form_row
+        %form{:action => "#", :method => :post, :id => "payment_form"}
+          %td
+            %select{:name => "payment[type]"}
+              %option{:value => "Cash"} Cash
+              %option{:value => "Check"} Check
+              %option{:value => "Credit Card"} Credit Card
+          %td
+            %input{:name => "payment[amount]", :size => "6", :id => "bid_amount"}
+          %td
+            =submit "Pay", :id => "Payment_submit"
+    %p.centered
+      %strong 
+        Total: $
+        %span#payments_total
+      
+
+  #paymenttip.inset
     To view or edit a person's payments, click on his or her name in the listing to the left.
   
   #admin.inset

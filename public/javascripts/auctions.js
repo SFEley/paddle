@@ -81,7 +81,7 @@ $(document).ready(function() {
   
   // Make the bid delete links work
   $(".delete_bid").live("click", function(e) {
-    var row = $(this).parents('tr');
+    var row = $(this).parent().parent();
     e.preventDefault();
     $.post($(this).attr('href'),"_method=delete",function() {
       $(row).hide('slow', function() {

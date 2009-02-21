@@ -13,8 +13,9 @@ class Person
   validates_format :email, :as => :email_address, :allow_nil => true
   
   has n, :selling, :class_name => "Auction", :child_key => [:seller_id]
-  has n, :bids
+  has n, :bids, :child_key => [:buyer_id]
   has n, :buying, :through => :bids, :class_name => "Auction", :winning => true, :order => [:title.asc], :child_key => [:buyer_id]
+  has n, :payments
   
   def self.by_names
     all(:order => [:last_name])
@@ -42,6 +43,18 @@ class Person
     else
       common_name
     end
+  end
+  
+  def total_payments
+    payments.sum(:amount) || 0
+  end
+  
+  def total_purchases
+    bids.sum(:amount, :winning => true) || 0
+  end
+  
+  def balance
+    total_purchases - total_payments
   end
       
       

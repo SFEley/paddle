@@ -53,7 +53,7 @@ class Bids < Application
     @bid = @auction.bids.get(id)
     raise NotFound unless @bid
     if @bid.destroy
-      redirect resource(:bids)
+      {:reply => "Bid deleted!"}.to_json
     else
       raise InternalServerError
     end

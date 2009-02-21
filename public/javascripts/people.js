@@ -3,17 +3,58 @@ $(document).ready(function() {
   // Activate a person and show the payments panel
   $(".person").live("click", function(e) {
     var id = this.id.match(/\d+/);
+    var payment_url = "/people/" + id + "/payments"
+    var person_name = $(this).children('.person_name').html();
+    
+    var payment_rows = function() {
+      $("#payments_table tr.ephemeral").remove();
+      $.getJSON(payment_url + ".json", function(response, status) {
+        $.each(response.payments, function(index,value) { 
+          $('<tr>').addClass('ephemeral').
+          append($("<td>" + value.type + "</td>")).
+          append($("<td>$" + parseFloat(value.amount).toFixed(2) + "</td>")).
+          append($("<td><a class='delete_payment' href='" + payment_url + "/" + value.id + "'>(X)</span></td>")).
+          insertAfter($("#payment_header"));
+        });
+        $("#payments_total").text('$' + parseFloat(response.person.total_payments).toFixed(2));
+        $("#purchases_total").text('$' + parseFloat(response.person.total_purchases).toFixed(2));
+        $("#balance").text('$' + parseFloat(response.person.balance).toFixed(2));
+        $("#bid_amount").val(parseFloat(response.person.balance).toFixed(2));
+      });
+    };
+    
+    $("#paymenttip").slideUp('fast');
     
     if ($(this).hasClass("active")) { // Toggle it off
       $(this).deactivate();
       $("#payments").slideUp("fast");
       $(this).removeClass("active");
     }
-    else{
+    else{ // Toggle it on
       $(this).activate();
       $("#payments").
-        html("This should retrieve the payments for person number " + id + ".").
+        children("#person_name").
+          html(person_name).
+        end().
         slideDown("fast");
+      
+      // Set the form URL
+      $("#payment_form").attr("action", payment_url);
+     
+      // Fill in the table
+      payment_rows();
+      
+    
+      $("#payment_form").ajaxForm({ 
+        dataType: "json",
+        clearForm: true,
+        // data: {
+        //    "bid[buyer_id]": $("#buyer_hidden").val()
+        // },
+        success: function(response,success,set){
+          payment_rows();
+        }
+      });
     }
   });
   
