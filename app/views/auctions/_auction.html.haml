@@ -3,6 +3,9 @@
 %h2.auction_title= auction.title
 %p= auction.description
 %p.inline.collapse
+  %strong Seller:
+  =auction.seller.common_name if auction.seller
+  %br
   %strong Total Available: 
   =auction.quantity
   %br

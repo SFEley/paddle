@@ -48,8 +48,9 @@ class Bids < Application
     end
   end
 
-  def destroy(id)
-    @bid = Bid.get(id)
+  def destroy(id, auction_id)
+    @auction = Auction.get(auction_id)
+    @bid = @auction.bids.get(id)
     raise NotFound unless @bid
     if @bid.destroy
       redirect resource(:bids)

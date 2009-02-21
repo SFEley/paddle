@@ -134,3 +134,6 @@
 
 #listing .collapse {
   display: none; }
+
+.line {
+  clear: both; }

@@ -60,4 +60,16 @@ class Auctions < Application
     end
   end
 
+  def close(id)
+    @auction = Auction.get(id)
+    @auction.close
+    redirect resource(:auctions)
+  end
+  
+  def reopen(id)
+    @auction = Auction.get(id)
+    @auction.reopen
+    redirect resource(:auctions)
+  end
+  
 end # Auctions

@@ -14,7 +14,11 @@
   .line
     Description:
   .line
-    =text_area :description, :rows => 6, :cols => 50, :title => "Description"
+    =text_area :description, :rows => 6, :cols => 45, :title => "Description"
+  .line
+    Seller:
+    #seller
+    =hidden_field :seller_id, :id => "auction_seller_id"
   .line 
     Total Quantity: 
     =text_field :quantity, :size => 2, :title => "Quantity"

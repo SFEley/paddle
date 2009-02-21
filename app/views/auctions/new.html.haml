@@ -1,4 +1,3 @@
-
 =form_for @auction, :action => url(:auctions) do
   =styled_message
 
@@ -15,6 +14,10 @@
     Description:
   .line
     =text_area :description, :rows => 6, :cols => 50, :title => "Description"
+  .line
+    Seller:
+    #seller
+    =hidden_field :seller_id, :id => "auction_seller_id"
   .line 
     Total Quantity: 
     =text_field :quantity, :size => 2, :title => "Quantity"

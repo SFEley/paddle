@@ -48,6 +48,8 @@
             / This is a horrible hack and I'm embarrassed by it, but Flexbox creation timing sucks
             %input{:type => "hidden", :name => "bid[buyer_id]", :id => "bid_buyer_id"}
             =submit "Bid", :id => "bid_submit"
+    %p.centered
+      =button "Close Auction", :id => :close_button
             
   #bidtip.inset
     To view or edit an auction, click on its name in the listing to the left.

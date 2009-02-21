@@ -28,7 +28,7 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
   resources :people
-  resources :auctions do |a|
+  resources :auctions, :member => {:close => :post} do |a|
     a.resources :bids
   end
   

@@ -24,19 +24,21 @@ class Auction
   def close
     transaction do |txn|
       quantity.times do |q|
-        bids[q].update_attributes(:winning => true) or raise RecordInvalid
+        if bids[q]
+          bids[q].update_attributes(:winning => true) or raise StandardError
+        end
       end
-      self.update_attributes(:status => :closed) or raise RecordInvalid
+      self.update_attributes(:status => :closed) or raise StandardError
     end
     true
-  rescue RecordInvalid
+  rescue StandardError
     false
   end
   
   def reopen
     transaction do |txn|
-      bids.all.update!(:winning => false) or raise RecordInvalid
-      self.update_attributes(:status => :open) or raise RecordInvalid
+      bids.all.update!(:winning => false) or raise StandardError
+      self.update_attributes(:status => :open) or raise StandardError
     end
     true
   rescue RecordInvalid
