@@ -34,12 +34,21 @@
 
   #bids.inset
     %h3#bid_title {{Title}}
-    %p Put bidder and amount in the fields below.
-    - 3.times do |bf|
-      %form{:id => "bidform_#{bf}", :class => "bidform", :action => "/auction/0/bids"}
-        %span{:id => "bidder_#{bf}", :class => "flexbox"}
-        %input{:id => "amount_#{bf}", :name => "amount", :size => "6"}
-
+    %table
+      %tr#bid_header
+        %th Bidder
+        %th Amount
+      %tr
+        %form{:action => "#", :method => :post, :id => "bid_form"}
+          %td
+            #buyer
+          %td
+            %input{:name => "bid[amount]", :size => "6", :id => "bid_amount"}
+          %td
+            / This is a horrible hack and I'm embarrassed by it, but Flexbox creation timing sucks
+            %input{:type => "hidden", :name => "bid[buyer_id]", :id => "bid_buyer_id"}
+            =submit "Bid", :id => "bid_submit"
+            
   #bidtip.inset
     To view or edit an auction, click on its name in the listing to the left.
     

@@ -1,13 +1,15 @@
 class Bids < Application
-  # provides :xml, :yaml, :js
+  provides :json
 
-  def index
-    @bids = Bid.all
+  def index(auction_id)
+    @auction = Auction.get(auction_id)
+    @bids = @auction.bids
     display @bids
   end
 
-  def show(id)
-    @bid = Bid.get(id)
+  def show(id, auction_id)
+    @auction = Auction.get(auction_id)
+    @bid = @auction.bids.get(id)
     raise NotFound unless @bid
     display @bid
   end
@@ -25,10 +27,11 @@ class Bids < Application
     display @bid
   end
 
-  def create(bid)
-    @bid = Bid.new(bid)
+  def create(bid, auction_id)
+    @auction = Auction.get(auction_id)
+    @bid = @auction.bids.build(bid)
     if @bid.save
-      redirect resource(@bid), :message => {:notice => "Bid was successfully created"}
+      display @bid, :show
     else
       message[:error] = "Bid failed to be created"
       render :new

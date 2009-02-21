@@ -1,22 +1,71 @@
+
 $(document).ready(function() {
+  var bid_row = function(bid) {
+    $("<td>" + bid.buyer.paddle_name + "</td>").
+      add($("<td>$" + bid.amount.toFixed(2) + "<td>")).
+      add($("<td><span id='delete_" + bid.id + "'>(X)</span></td>")).
+      wrapAll("<tr></tr>").
+      insertAfter("#bid_header");
+  }
   
   // Activate an auction and show the bid panel
   $(".auction").live("click", function(e) {
     var id = this.id.match(/\d+/);
+    var bid_url = "/auctions/" + id + "/bids";
+    
+    var title = $(this).children(".auction_title").text();
     
     $("#bidtip").slideUp("fast");
+    // Clear the flexbox
+    $("#buyer").empty();
     
     if ($(this).hasClass("active")) { // Toggle it off
       $(this).deactivate();
       $("#bids").slideUp("fast");
+
+
       $(this).removeClass("active");
     }
     else{
       $(this).activate();
       $("#bids").
-        html("This should retrieve the bids for auction number " + id + ".").
-        slideDown("fast");
-    }
+        children("#bid_title").
+          text(title).
+        end().
+        slideDown("fast", function() {
+          // Activate the person lookup box
+          $("#buyer").flexbox("/people.json", {
+            width: 150,
+            
+          });
+        
+        // Set the form URL
+        $("#bid_form").attr("action", bid_url);
+         
+        // Fill in the table
+        $.getJSON(bid_url + ".json", function(response,status) {
+          $.each(response.bids, function(index,value){
+            bid_row(value);
+          });
+        });
+        
+        $("#bid_form").ajaxForm({ 
+          dataType: "json",
+          clearForm: true,
+          // data: {
+          //    "bid[buyer_id]": $("#buyer_hidden").val()
+          // },
+          success: function(response,success,set){
+            bid_row(response);
+          }
+        });
+        
+      });
+    };
+  });
+  
+  $("#buyer_input").livequery("blur", function(e) {
+    $("#bid_buyer_id").val($("#buyer_hidden").val());
   });
   
   // Hide and show auction types when checked
@@ -87,4 +136,6 @@ $(document).ready(function() {
       $(auction).children(".message").animate({opacity: 1.0}, 3000).hide("slow", function() {$(this).remove();});
     });
   });
+  
+  
 });

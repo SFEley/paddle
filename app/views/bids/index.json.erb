@@ -1,0 +1,24 @@
+<%=
+  { :bids => 
+    @bids.collect do |bid|
+      {
+        :id => bid.id,
+        :auction => {
+          :id => bid.auction.id,
+          :title => bid.auction.title,
+          :minimum => bid.auction.minimum_bid,
+          :quantity => bid.auction.quantity
+        },
+        :buyer => {
+          :id => bid.buyer.id,
+          :paddle_name => bid.buyer.paddle_name,
+          :name => bid.buyer.common_name,
+          :phone => bid.buyer.phone,
+          :email => bid.buyer.email
+        },
+        :amount => bid.amount,
+        :winning => bid.winning
+      }
+    end
+  }.to_json
+%>

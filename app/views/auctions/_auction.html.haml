@@ -1,6 +1,6 @@
 =link_to "(Delete)", resource(auction), :class => "utility delete collapse"
 =link_to "(Edit)", resource(auction, :edit), :class => "utility edit collapse"
-%h2= link_to auction.title, resource(auction)
+%h2.auction_title= auction.title
 %p= auction.description
 %p.inline.collapse
   %strong Total Available: 
