@@ -17,6 +17,7 @@ end
  
 Merb::BootLoader.before_app_loads do
   # This will get executed after dependencies have been loaded but before your app's classes have loaded.
+  Merb.add_mime_type :pdf, :to_pdf, %w[application/pdf], "Content-Encoding" => "gzip"
 end
  
 Merb::BootLoader.after_app_loads do
