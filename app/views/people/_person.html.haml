@@ -12,3 +12,15 @@
     %br
     %strong Phone #:
     =person.phone
+
+%h3.collapse Winning Bids
+%table.collapse
+  %tr
+    %th Item
+    %th Amount
+  - if person && person.bids 
+    - person.bids.each do |bid|
+      - if bid.winning
+        %tr
+          %td= bid.auction.title
+          %td= bid.amount.to_currency

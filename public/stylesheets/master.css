@@ -137,3 +137,15 @@
 
 .line {
   clear: both; }
+
+table {
+  border-collapse: collapse; }
+  table tr.total {
+    font-weight: bold; }
+  table th {
+    border: 2px ridge;
+    text-align: left; }
+  table td {
+    border: 2px ridge;
+    border-collapse: collapse;
+    border-spacing: 0; }
