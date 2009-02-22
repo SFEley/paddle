@@ -34,4 +34,4 @@ dependency "dm-serializer", dm_gems_version
 dependency "merb_datamapper", merb_gems_version
 
 dependency "haml", ">= 2.0.8"
-
+dependency "prawn", ">0"

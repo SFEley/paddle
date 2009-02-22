@@ -9,7 +9,7 @@ class Import < Application
     parser.convert do |field, info|
       case info.header
         when :minimum_bid
-          field.to_f
+          field.to_s.tr('$','').to_f
         when :quantity
           field.to_i
         when :person_name

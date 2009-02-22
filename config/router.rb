@@ -45,6 +45,7 @@ Merb::Router.prepare do
   # default_routes
   
   match('/import').to(:controller => 'import', :action => 'import').name(:import)
+  match('/bidsheets').to(:controller => 'bidsheets', :action => 'index', :format => :pdf).name(:bidsheets)
   
   # Change this for your home page to be available at /
   match('/').to(:controller => 'auctions', :action =>'index')
