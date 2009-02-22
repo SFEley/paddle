@@ -46,14 +46,14 @@ class People < Application
             font_size 9
             bought = []
             person.bids(:winning => true).each do |bid|
-              bought << [bid.auction.code || '', bid.auction.title || '', bid.auction.description || '', (bid.auction.seller && bid.auction.seller.common_name) || '', (bid.auction.seller && bid.auction.seller.phone) || '', (bid.auction.seller && bid.auction.seller.email) || '', bid.amount.to_currency || '']
+              bought << [bid.auction.code || '', bid.auction.title || '', (bid.auction.seller && bid.auction.seller.common_name) || '', (bid.auction.seller && bid.auction.seller.phone) || '', (bid.auction.seller && bid.auction.seller.email) || '', bid.amount.to_currency || '']
             end
             bought << [' ', ' ', ' ', ' ', ' ', ' ', ' '] if bought.empty?
             
             table bought,
               :position => :left,
               :border_style => :underline_header,
-              :headers => ['Code', 'Title', 'Description', 'Seller', 'Phone', 'Email', 'Amount'],
+              :headers => ['Code', 'Title', 'Seller', 'Phone', 'Email', 'Amount'],
               :row_colors => :pdf_writer
           end
 
@@ -103,14 +103,14 @@ class People < Application
           font_size 12
           bought = []
           person.bids(:winning => true).each do |bid|
-            bought << [bid.auction.code || '', bid.auction.title || '', bid.auction.description || '', (bid.auction.seller && bid.auction.seller.common_name) || '', (bid.auction.seller && bid.auction.seller.phone) || '', (bid.auction.seller && bid.auction.seller.email) || '', bid.amount.to_currency || '']
+            bought << [bid.auction.code || '', bid.auction.title || '', (bid.auction.seller && bid.auction.seller.common_name) || '', (bid.auction.seller && bid.auction.seller.phone) || '', (bid.auction.seller && bid.auction.seller.email) || '', bid.amount.to_currency || '']
           end
           bought << [' ', ' ', ' ', ' ', ' ', ' ', ' '] if bought.empty?
         
           table bought,
             :position => :left,
             :border_style => :underline_header,
-            :headers => ['Code', 'Title', 'Description', 'Seller', 'Phone', 'Email', 'Amount'],
+            :headers => ['Code', 'Title', 'Seller', 'Phone', 'Email', 'Amount'],
             :row_colors => :pdf_writer
         end
       end
