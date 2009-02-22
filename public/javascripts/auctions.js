@@ -68,7 +68,11 @@ $(document).ready(function() {
         $("#close_button").bind("click", function(e) {
           $.post(close_url, function(response, status) {
             $(auction).removeClass('status_open').addClass('status_closed');
-          })
+            if ($('#status_closed').attr('checked') != 'checked') {
+              $(auction).deactivate();
+              $(auction).hide('fast');
+            };
+          });
         })
         
       });

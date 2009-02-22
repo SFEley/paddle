@@ -3,7 +3,7 @@ class Bids < Application
 
   def index(auction_id)
     @auction = Auction.get(auction_id)
-    @bids = @auction.bids
+    @bids = @auction.bids if @auction
     display @bids
   end
 
